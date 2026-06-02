@@ -127,7 +127,7 @@ export default function RSVPForm({ onRsvpSuccess }: RSVPFormProps) {
       <div className="absolute top-0 right-0 w-32 h-32 bg-gaming-purple/5 rounded-full filter blur-3xl pointer-events-none" />
 
       <h3 className="font-display font-black text-lg sm:text-xl text-white mb-1 uppercase tracking-tighter flex items-center gap-2 italic">
-        <img src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/assets/svg/2728.svg" className="w-5 h-5 animate-pulse" alt="sparkle" />
+        <Sparkles className="w-5 h-5 text-red-500 animate-pulse" />
         CONFIRMÁ TU ASISTENCIA VIP IN SITU
       </h3>
       <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
