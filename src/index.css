@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-gaming-purple: #9146ff;
+  --color-gaming-blue: #00f0ff;
+  --color-mancity-blue: #6caee0;
+  --color-independiente-red: #e30613;
+}
+
+/* Custom RGB and LED animation utilities */
+@keyframes rgb-flow {
+  0% { border-color: #e30613; box-shadow: 0 0 10px rgba(227, 6, 19, 0.5); }
+  33% { border-color: #00f0ff; box-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+  66% { border-color: #9146ff; box-shadow: 0 0 10px rgba(145, 70, 255, 0.5); }
+  100% { border-color: #e30613; box-shadow: 0 0 10px rgba(227, 6, 19, 0.5); }
+}
+
+.rgb-shadow-border {
+  animation: rgb-flow 8s infinite linear;
+  border-width: 2px;
+  border-style: solid;
+}
+
+@keyframes led-pulse {
+  0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 2px var(--color-gaming-blue)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px var(--color-gaming-blue)); }
+}
+
+.led-neon-blue {
+  animation: led-pulse 2s infinite alternate;
+}
+
+/* Scrollbar styles for stream chat */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* CRT monitor lines for gaming nostalgia */
+.crt-overlay {
+  position: relative;
+}
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+  background-size: 100% 4px;
+  z-index: 10;
+  pointer-events: none;
+}

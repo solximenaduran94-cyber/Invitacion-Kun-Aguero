@@ -1,0 +1,10 @@
+{
+  "name": "Invitación de Cumpleaños del Kun",
+  "description": "Invitación digital interactiva para el cumpleaños 38 de Sergio 'Kun' Agüero con temáticas personalizables, mensajes interactivos, vela soplable para torta, Twitch chat y saludos con voz del Kun AI.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
