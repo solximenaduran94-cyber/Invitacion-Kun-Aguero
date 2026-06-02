@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, Volume2, Gamepad, Award } from 'lucide-react';
 import { motion } from 'motion/react';
 import { EventTheme } from '../types';
+// @ts-ignore
+import bannerImg from '../assets/images/kun_banner_1780364680625.png';
 
 interface InvitationCardProps {
   theme: EventTheme;
@@ -123,7 +125,7 @@ export default function InvitationCard({ theme }: InvitationCardProps) {
       {/* Decorative generated image banner on top half */}
       <div className="relative h-60 md:h-64 overflow-hidden bg-neutral-950">
         <img 
-          src="/src/assets/images/kun_banner_1780364680625.png" 
+          src={bannerImg} 
           alt="Kun Aguero Gaming and Football Banner" 
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover opacity-85 transition-transform duration-700 hover:scale-105 select-none"
