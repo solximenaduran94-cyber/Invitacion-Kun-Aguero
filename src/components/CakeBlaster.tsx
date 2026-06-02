@@ -14,6 +14,7 @@ export default function CakeBlaster({ theme, onBlowSuccess }: CakeBlasterProps) 
   const [blowProgress, setBlowProgress] = useState(0); // 0 to 100
   const [isBlowing, setIsBlowing] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [micError, setMicError] = useState<string | null>(null);
   
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
@@ -51,11 +52,20 @@ export default function CakeBlaster({ theme, onBlowSuccess }: CakeBlasterProps) 
   // Handle Audio Microphone detection
   const startMic = async () => {
     try {
+      setMicError(null);
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error('APIs de micrófono no son compatibles con este navegador.');
+      }
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       streamRef.current = stream;
       
       const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
       const audioCtx = new AudioCtx();
+      
+      if (audioCtx.state === 'suspended') {
+        await audioCtx.resume();
+      }
+      
       audioContextRef.current = audioCtx;
       
       const source = audioCtx.createMediaStreamSource(stream);
@@ -68,7 +78,8 @@ export default function CakeBlaster({ theme, onBlowSuccess }: CakeBlasterProps) 
       detectBlow();
     } catch (err) {
       console.warn('Microphone permission denied or not supported:', err);
-      alert('No pudimos acceder al micrófono. Usá el modo de soplado manual.');
+      setMicError('No pudimos acceder al micrófono. Usá el modo de soplado manual.');
+      setMicActive(false);
     }
   };
 
@@ -165,6 +176,7 @@ export default function CakeBlaster({ theme, onBlowSuccess }: CakeBlasterProps) 
     setCandlesLit(true);
     setBlowProgress(0);
     setShowConfetti(false);
+    setMicError(null);
   };
 
   useEffect(() => {
@@ -424,6 +436,16 @@ export default function CakeBlaster({ theme, onBlowSuccess }: CakeBlasterProps) 
                 className="h-full rounded-full transition-all duration-150 ease-out bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 shadow-[0_0_8px_rgba(244,63,94,0.5)]"
                 style={{ width: `${blowProgress}%` }}
               />
+            </div>
+          </div>
+        )}
+
+        {/* Inline Mobile-Friendly Mic Error Warn Banner */}
+        {micError && (
+          <div className="w-full max-w-sm px-4 mt-1">
+            <div className="p-3 rounded-xl bg-red-950/20 border border-red-500/30 text-[11px] text-red-300 leading-snug flex items-start gap-2">
+              <span className="text-red-400 font-bold shrink-0 mt-0.5">⚠️</span>
+              <span>{micError}</span>
             </div>
           </div>
         )}
