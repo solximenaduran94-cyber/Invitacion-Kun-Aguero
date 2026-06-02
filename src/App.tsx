@@ -373,15 +373,22 @@ export default function App() {
             </div>
 
             {/* BRAND FOOTER AND GREETINGS CREDITS - ANCHORING DESIGN */}
-            <div className="w-full flex flex-col sm:flex-row justify-between items-center py-6 border-t border-neutral-900/80 text-[10px] text-neutral-500 gap-3 font-mono mt-4">
-              <span className="flex items-center gap-1.5">
-                <Compass className="w-3.5 h-3.5 text-gaming-blue" />
-                CRAFTED FOR SERGIO KUN AGÜERO BIRTHDAY CELEBRATION 🍰 2026
-              </span>
-              <span className="flex items-center gap-2">
-                <span>ESTADO SERVIDOR: CONECTADO</span>
-                <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" />
-              </span>
+            <div className="w-full flex flex-col gap-4 py-6 border-t border-neutral-900/80 mt-4">
+              <div className="flex flex-col sm:flex-row justify-between items-center text-[10px] text-neutral-500 gap-3 font-mono">
+                <span className="flex items-center gap-1.5">
+                  <Compass className="w-3.5 h-3.5 text-gaming-blue" />
+                  CRAFTED FOR SERGIO KUN AGÜERO BIRTHDAY CELEBRATION 🍰 2026
+                </span>
+                <span className="flex items-center gap-2">
+                  <span>ESTADO SERVIDOR: CONECTADO</span>
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" />
+                </span>
+              </div>
+              <div className="flex justify-center items-center pt-2">
+                <span className="text-[10px] font-sans font-black uppercase italic tracking-widest text-neutral-500 hover:text-white transition-colors duration-300 flex items-center">
+                  HECHO CON ♥ POR <span className="inline-block bg-red-600 text-black px-2.5 py-0.5 rounded-none font-black italic ml-1.5 transform -skew-x-12 select-none shadow-md">JIMENA GLOOP</span>
+                </span>
+              </div>
             </div>
 
           </motion.div>
